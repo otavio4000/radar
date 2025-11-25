@@ -1,0 +1,38 @@
+# Kconfig - Radar System Configuration
+
+menu "Configuração de Sistema de Radar"
+
+config RADAR_SENSOR_DISTANCE_MM
+    int "Distância entre os sensores (MM)"
+    default 500
+    range 100 2000
+    help
+      Distancia entre os dois sensores magnéticos usados para calcular a velocidade.
+
+config RADAR_SPEED_LIMIT_LIGHT_KMH
+    int "Limite de velocidade para veículos leves (km/h)"
+    default 60
+    range 30 100
+    help
+      Velocidade máxima permitida para veículos leves (2 eixos).
+
+config RADAR_SPEED_LIMIT_HEAVY_KMH
+    int "Limite de Velocidade para veículos pesados (km/h)"
+    default 40
+    range 20 80
+    help
+      Velocidade máxima permitida para veículos pesados (3+ eixos).
+
+config RADAR_WARNING_THRESHOLD_PERCENT
+    int "Percentual de limite de velocidade que dispara o aviso"
+    default 90
+    range 80 99
+    help
+      Percentual de limite de velocidade que aciona o aviso amarelo na tela.
+
+config RADAR_CAMERA_FAILURE_RATE_PERCENT
+    int "Taxa de simulaçao de Falha da Camera (0-100%)"
+    default 10
+    range 0 100
+    help
+      Porcetagem de chance da camera simular uma falha.
