@@ -1,0 +1,52 @@
+#include "ipc.h"
+#include <zephyr/kernel.h>
+#include <zephyr/sys/printk.h>
+
+/* Buffers das message queues */
+static ipc_msg_t sensor_to_controller_buffer[IPC_QUEUE_LEN];
+static ipc_msg_t camera_to_controller_buffer[IPC_QUEUE_LEN];
+static ipc_msg_t controller_to_display_buffer[IPC_QUEUE_LEN];
+
+/* Filas IPC (visíveis para outros arquivos via extern no header) */
+struct k_msgq sensor_to_controller_msgq;
+struct k_msgq camera_to_controller_msgq;
+struct k_msgq controller_to_display_msgq;
+
+/* Inicialização */
+void ipc_init(void)
+{
+    printk("[IPC] Inicializando canais IPC...\n");
+
+    k_msgq_init(&sensor_to_controller_msgq,
+                (char *)sensor_to_controller_buffer,
+                sizeof(ipc_msg_t),
+                IPC_QUEUE_LEN);
+
+    k_msgq_init(&camera_to_controller_msgq,
+                (char *)camera_to_controller_buffer,
+                sizeof(ipc_msg_t),
+                IPC_QUEUE_LEN);
+
+    k_msgq_init(&controller_to_display_msgq,
+                (char *)controller_to_display_buffer,
+                sizeof(ipc_msg_t),
+                IPC_QUEUE_LEN);
+
+    printk("[IPC] Message queues prontas.\n");
+}
+
+
+struct k_msgq *get_sensor_msgq(void)
+{
+    return &sensor_to_controller_msgq;
+}
+
+struct k_msgq *get_camera_msgq(void)
+{
+    return &camera_to_controller_msgq;
+}
+
+struct k_msgq *get_display_msgq(void)
+{
+    return &controller_to_display_msgq;
+}

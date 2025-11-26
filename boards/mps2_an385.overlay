@@ -2,33 +2,21 @@
 
 / {
     aliases {
-        led2 = &led2_digital;
-        sw0  = &button0;
+        sensorgpio = &sensor_node;
+        cameragpio = &camera_node;
     };
 
-    leds {
-        compatible = "gpio-leds";
-
-        led2_digital: led2_digital {
-            gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
-            label = "LED Digital (Blink)";
-        };
-
-        led1_digital: led1_digital { 
-            gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
-            label = "LED Soft-PWM (Fade)";
-        };
-
- 
-    };
-
-
-    buttons {
+    sensors {
         compatible = "gpio-keys";
 
-        button0: button_0 {
-            gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            label = "User Button (sw0)";
+        sensor_node: sensor_gpio0 {
+            gpios = <&gpio0 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            label = "Sensor GPIO (pin 5)";
+        };
+
+        camera_node: camera_gpio0 {
+            gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            label = "Camera GPIO (pin 6)";
         };
     };
 };
