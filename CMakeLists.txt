@@ -10,4 +10,6 @@ target_sources(app PRIVATE
     src/controller.c
     src/camera.c
     src/display_dummy.c
+    src/vehicle_simulator.c
+    src/input_thread.c
 )
