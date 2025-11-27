@@ -1,7 +1,7 @@
 #include "controller.h"
 #include "sensors.h"
 #include "ipc.h"                 
-#include "vehicle_simulator.h"   
+#include "../tests/integration/vehicle_simulator.h"   
 #include "display_dummy.h"       
 #include <zephyr/logging/log.h>
 #include <stdio.h>              

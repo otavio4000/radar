@@ -1,6 +1,6 @@
 #include "vehicle_simulator.h"
-#include "ipc.h"
-#include "sensors.h"
+#include "../../src/ipc.h"
+#include "../../src/sensors.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -47,8 +47,8 @@ const char* vehicle_simulator_generate(void)
     srand(k_uptime_get_32() ^ 0xDEADBEEF); 
     
     plate_buffer[0] = 'A' + (rand() % 26);
-    plate_buffer[1] = '0' + (rand() % 10);
-    plate_buffer[2] = '0' + (rand() % 10);
+    plate_buffer[1] = 'A' + (rand() % 10);
+    plate_buffer[2] = 'A' + (rand() % 10);
     plate_buffer[3] = '0' + (rand() % 10);
     plate_buffer[4] = 'A' + (rand() % 26);
     plate_buffer[5] = '0' + (rand() % 10);

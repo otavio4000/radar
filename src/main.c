@@ -6,7 +6,7 @@
 #include "controller.h"
 #include "camera.h"     
 #include "display_dummy.h" 
-#include "vehicle_simulator.h" 
+#include "../tests/integration/vehicle_simulator.h" 
 #include "input_thread.h"    
 
 LOG_MODULE_REGISTER(main_app, LOG_LEVEL_INF);

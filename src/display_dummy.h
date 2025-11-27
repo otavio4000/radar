@@ -1,4 +1,3 @@
-// Arquivo: display_dummy.h
 
 #ifndef DISPLAY_DUMMY_H
 #define DISPLAY_DUMMY_H

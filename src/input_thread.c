@@ -1,11 +1,9 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/drivers/uart.h>
-#include <zephyr/device.h>    // Para DEVICE_DT_GET
-
+#include <zephyr/device.h>    
 #include "input_thread.h"
 #include "ipc.h" 
-// #include <zephyr/logging/log.h> // Incluir se usar LOG_INF, LOG_ERR, etc.
 
 const struct device *const console_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_console));
 
@@ -38,14 +36,12 @@ static void input_thread_fn(void *a, void *b, void *c)
                     .data = k_uptime_get_32() 
                 };
 
-                // Envia para a fila (Produtor)
                 int ret = ipc_send_event(&msg);
                 
                 if (ret != 0) {
                     printk("Input Thread ERROR: Falha ao enviar evento (%d). Fila cheia?\n", ret);
                 }
             } else {
-                // Opcional: ecoar o caractere digitado para feedback
                 uart_poll_out(console_dev, c); 
             }
         }
