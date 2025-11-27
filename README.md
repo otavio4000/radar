@@ -1,4 +1,4 @@
-#Sistema de Radar Eletrônico – Zephyr RTOS
+# Sistema de Radar Eletrônico – Zephyr RTOS
 
 Este projeto implementa um Radar Eletrônico para Controle de Velocidade utilizando o Zephyr Real-Time Operating System (RTOS).
 O objetivo é simular, em tempo real:
@@ -19,9 +19,9 @@ O objetivo é simular, em tempo real:
 
 - Tudo isso de forma assíncrona, determinística e com prioridades de execução real-time.
 
-#Tecnologias & Conceitos Utilizados
+# Tecnologias & Conceitos Utilizados
 
-##1. Agendamento e Prioridades de Thread (RTOS)
+## 1. Agendamento e Prioridades de Thread (RTOS)
 
 O Zephyr utiliza um escalonador preemptivo baseado em prioridades.
 
@@ -77,7 +77,7 @@ Não gastar CPU inutilmente
 
 Garantindo comportamento realmente RTOS.
 
-#Arquitetura do Sistema
+# Arquitetura do Sistema
 
 O sistema funciona como um pipeline reativo baseado em mensagens.
 
@@ -94,7 +94,7 @@ Envia:
 
 raw_detection_data_t { tempo_ms, num_eixos }
 
-###Decisão (Controller Thread)
+### Decisão (Controller Thread)
 
 Executa:
 
@@ -115,7 +115,7 @@ Status	Ação
 Verde / Amarelo	Envia direto para display
 Vermelho	Aciona câmera via camera_trigger_t e espera a placa
 
-###Finalização
+### Finalização
 
 Câmera retorna:
 
@@ -129,19 +129,19 @@ display_msg_t
 
 E envia ao display.
 
-🚀 Execução do Projeto (QEMU)
+## Execução do Projeto (QEMU)
 
 O projeto roda em:
 
 mps2_an385 (ARM Cortex-M3)
 
-📦 Pré-requisitos
+Pré-requisitos
 
 Zephyr SDK + Toolchain
 
 west (meta-tool do Zephyr)
 
-🛠️ Comandos
+### Comandos
 1. Limpar build (recomendado)
 rm -rf build
 
@@ -161,3 +161,4 @@ O console exibirá:
 - Simulação de veículos
 
 - Detecções, decisões e placas
+
